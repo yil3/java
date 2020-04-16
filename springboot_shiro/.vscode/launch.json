@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-ShiroApplication<springboot_shiro>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.universe.ShiroApplication",
+      "projectName": "springboot_shiro",
+      "args": ""
+    }
+  ]
+}

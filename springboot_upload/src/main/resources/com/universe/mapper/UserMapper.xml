@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.universe.dao.UserDAO">
+    <select id="login" parameterType="User" resultType="User">
+        select * from f_user
+        where username = #{username}
+        and password = #{password}
+    </select>
+
+</mapper>

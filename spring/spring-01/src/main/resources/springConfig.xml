@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <!-- 无参构造 -->
+    <bean id="student" class="com.yil3.pojo.Student">
+        <property name="id" value="10"/>
+        <property name="name" value="小宇"/>
+        <property name="age" value="20"/>
+        <property name="address" ref="address"/>
+    </bean>
+    <!-- 有参构造 -->
+    <bean id="student1" class="com.yil3.pojo.Student">
+        <constructor-arg name="id" value="11"/>
+        <constructor-arg name="name" value="戏表人"/>
+        <constructor-arg name="age" value="33"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+
+    <bean id="address" class="com.yil3.pojo.Address">
+        <property name="id" value="1"/>
+        <property name="name" value="中国"/>
+    </bean>
+    <bean id="address1" class="com.yil3.pojo.Address">
+        <property name="id" value="1"/>
+        <property name="name" value="深圳"/>
+    </bean>
+
+
+    <!-- set集合 -->
+    <bean id="student2" class="com.yil3.pojo.Student2">
+        <property name="name" value="妻晃"/>
+        <property name="id" value="2"/>
+        <property name="age" value="20"/>
+        <property name="addresses">
+            <list>
+                <ref bean="address"/>
+                <ref bean="address1"/>
+            </list>
+        </property>
+     </bean>
+
+    <!-- bean继承 -->
+    <bean id="stu" class="com.yil3.pojo.Student2" parent="student2">
+        <property name="name" value="表介不"/>
+    </bean>
+
+    <!-- 静态工厂 -->
+    <bean id="car" class="com.yil3.pojo.StaticCar" factory-method="getCat">
+        <constructor-arg value="1"/>
+    </bean>
+
+    <!-- 实例工厂 -->
+    <bean id="carintance" class="com.yil3.instance.CarInstance">
+    </bean>
+    <bean id="car2" factory-bean="carintance" factory-method="getCar">
+        <constructor-arg value="2"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-SwaggerApplication<springboot_swagger>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.universe.SwaggerApplication",
+      "projectName": "springboot_swagger",
+      "args": ""
+    }
+  ]
+}

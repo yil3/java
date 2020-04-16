@@ -1,7 +1,8 @@
 HELP.md
-target/
-.DS_Store
-.gitignore
+/target
+*.DS_Store
+*.gitignore
+/out
 
 ### STS ###
 .apt_generated

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            let student = {
+                name: "霜期",
+                age: 22
+            };
+
+            $.ajax({
+                url: "/save",
+                data:JSON.stringify(student),
+                type:"POST",
+                contentType:"application/json;charset=UTF-8",
+                dataType:"JSON",
+                success: function(res){
+                    console.log(res);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+toSave
+</body>
+</html>

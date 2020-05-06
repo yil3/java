@@ -2,6 +2,8 @@ package com.universe.config;
 
 import java.util.LinkedHashMap;
 
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,6 +19,7 @@ public class ShiroConfig {
   @Bean
   public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("getDefaultWebSecurityManager") DefaultWebSecurityManager defaultWebSecurityManager){
     ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
+
     bean.setSecurityManager(defaultWebSecurityManager);
     /**
       * rele: 拥有某个角色权限才能访问
@@ -42,8 +45,8 @@ public class ShiroConfig {
 
   // 关联Realm对象
   @Bean
-  public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("userRealm") final UserRealm userRealm){
-    final DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+  public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("userRealm") UserRealm userRealm){
+    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
     securityManager.setRealm(userRealm);
     return securityManager;
   }
@@ -51,8 +54,25 @@ public class ShiroConfig {
   // 创建realm对象
   @Bean
   public UserRealm userRealm(){
-    return new UserRealm();
+    UserRealm userRealm = new UserRealm();
+    return userRealm;
   }
+
+  // 注入解密
+//  @Bean
+//  public UserRealm userRealm(CredentialsMatcher hashedCredentialsMatcher){
+//    UserRealm userRealm = new UserRealm();
+//    userRealm.setCredentialsMatcher(hashedCredentialsMatcher);
+//    return userRealm;
+//  }
+
+  // 创建解密凭证器
+//  @Bean
+//  public CredentialsMatcher getCredentialsMatcher(){
+//    HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+//    hashedCredentialsMatcher.setHashAlgorithmName("MD5");
+//    return hashedCredentialsMatcher;
+//  }
 
   // 创建前端交互Shiro拓展
   @Bean

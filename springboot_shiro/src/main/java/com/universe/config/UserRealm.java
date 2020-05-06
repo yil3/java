@@ -45,13 +45,14 @@ public class UserRealm extends AuthorizingRealm {
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
     // 获取当前用户
+//    String principal = (String) token.getPrincipal();
     UsernamePasswordToken userToken = (UsernamePasswordToken) token;
     // 查询数据库
     FUser fUser = fUserService.selectByName(userToken.getUsername());
 
     if(fUser == null)return null;
     // 第一个参数传递当前用户对象到授权方法内
-	  return new SimpleAuthenticationInfo(fUser, fUser.getPassword(),"");
+	  return new SimpleAuthenticationInfo(fUser, fUser.getPassword(),this.getName());
   }
   
 

@@ -11,25 +11,26 @@ import java.util.List;
 @SpringBootTest
 class MybatisPlusApplicationTests {
 
-    @Autowired
-    private UserDAO userDAO;
-    @Test
-    void contextLoads() {
-        List<User> users = userDAO.selectList(null);
-        users.forEach(System.out::println);
-        System.out.println(userDAO);
-    }
+  @Autowired
+  private UserDAO userDAO;
 
-    @Test
-    void inset(){
-        User user = new User();
-        user.setAge(20);
-        user.setName("universe");
-        user.setEmail("123@123.sina.com");
-        int res = userDAO.insert(user);
-        System.out.println(res);
-        System.out.println(user);
-    }
+  @Test
+  void contextLoads() {
+    List<User> users = userDAO.selectList(null);
+    users.forEach(System.out::println);
+    System.out.println(userDAO);
+  }
+
+  @Test
+  void inset() {
+    User user = new User();
+    user.setAge(20);
+    user.setName("universe");
+    user.setEmail("123@123.sina.com");
+    int res = userDAO.insert(user);
+    System.out.println(res);
+    System.out.println(user);
+  }
 
 
 }

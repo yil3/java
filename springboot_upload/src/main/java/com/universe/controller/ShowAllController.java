@@ -52,8 +52,8 @@ public class ShowAllController {
         //获取文件真实路径
         String loadPath =  ResourceUtils.getURL("classpath:").getPath() + "static" + userFile.getPath();
         //响应附件下载
-        response.setHeader("content-disposition",openStyle+";fileName=" + URLEncoder.encode(userFile.getOldFileName(),"utf-8"));
-        //获取文件出入流
+        response.setHeader("content-disposition",openStyle + ";fileName=" + URLEncoder.encode(userFile.getOldFileName(),"utf-8"));
+        //获取文件输入流
         FileInputStream fileInputStream = new FileInputStream(new File(loadPath,userFile.getNewFileName()));
         //获取文件响应输出流
         ServletOutputStream outputStream = response.getOutputStream();

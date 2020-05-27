@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ihrm.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.ihrm.entity.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="enable_state" jdbcType="INTEGER" property="enableState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="time_of_entry" jdbcType="TIMESTAMP" property="timeOfEntry" />
+    <result column="form_of_employment" jdbcType="INTEGER" property="formOfEmployment" />
+    <result column="work_number" jdbcType="VARCHAR" property="workNumber" />
+    <result column="form_of_management" jdbcType="VARCHAR" property="formOfManagement" />
+    <result column="working_city" jdbcType="VARCHAR" property="workingCity" />
+    <result column="correction_time" jdbcType="TIMESTAMP" property="correctionTime" />
+    <result column="in_service_status" jdbcType="INTEGER" property="inServiceStatus" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="time_of_dimission" jdbcType="TIMESTAMP" property="timeOfDimission" />
+    <result column="staff_photo" jdbcType="LONGVARCHAR" property="staffPhoto" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bs_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ihrm.entity.User">
+    insert into bs_user (id, mobile, username, 
+      password, enable_state, create_time, 
+      department_id, time_of_entry, form_of_employment, 
+      work_number, form_of_management, working_city, 
+      correction_time, in_service_status, company_id, 
+      company_name, department_name, level, 
+      time_of_dimission, staff_photo)
+    values (#{id,jdbcType=BIGINT}, #{mobile,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{enableState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{departmentId,jdbcType=VARCHAR}, #{timeOfEntry,jdbcType=TIMESTAMP}, #{formOfEmployment,jdbcType=INTEGER}, 
+      #{workNumber,jdbcType=VARCHAR}, #{formOfManagement,jdbcType=VARCHAR}, #{workingCity,jdbcType=VARCHAR}, 
+      #{correctionTime,jdbcType=TIMESTAMP}, #{inServiceStatus,jdbcType=INTEGER}, #{companyId,jdbcType=BIGINT}, 
+      #{companyName,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
+      #{timeOfDimission,jdbcType=TIMESTAMP}, #{staffPhoto,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ihrm.entity.User">
+    update bs_user
+    set mobile = #{mobile,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      enable_state = #{enableState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      time_of_entry = #{timeOfEntry,jdbcType=TIMESTAMP},
+      form_of_employment = #{formOfEmployment,jdbcType=INTEGER},
+      work_number = #{workNumber,jdbcType=VARCHAR},
+      form_of_management = #{formOfManagement,jdbcType=VARCHAR},
+      working_city = #{workingCity,jdbcType=VARCHAR},
+      correction_time = #{correctionTime,jdbcType=TIMESTAMP},
+      in_service_status = #{inServiceStatus,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=BIGINT},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      time_of_dimission = #{timeOfDimission,jdbcType=TIMESTAMP},
+      staff_photo = #{staffPhoto,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, mobile, username, password, enable_state, create_time, department_id, 
+    time_of_entry, form_of_employment, work_number, form_of_management, working_city, 
+    correction_time, in_service_status, company_id, company_name, department_name, level, 
+    time_of_dimission, staff_photo
+    from bs_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, mobile, username, password, enable_state, create_time, department_id, 
+    time_of_entry, form_of_employment, work_number, form_of_management, working_city, 
+    correction_time, in_service_status, company_id, company_name, department_name, level, 
+    time_of_dimission, staff_photo
+    from bs_user
+  </select>
+</mapper>

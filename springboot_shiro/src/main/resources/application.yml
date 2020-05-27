@@ -1,13 +1,17 @@
-
+server:
+  port: 8828
 spring:
-  thymeleaf:
-    cache: false
+  application:
+    name: shiro
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/mydb?useSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/shiro?useSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
 # mybatis:
 #   type-aliases-package: com.universe.entity
@@ -17,4 +21,5 @@ spring:
 mybatis-plus:
   type-aliases-package: com.universe.entity
   mapper-locations:
-  - classpath:com/universe/mapper/*.xml
+  - classpath:mapper/*.xml
+

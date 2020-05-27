@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+    PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!--本地mysql驱动jar包路径-->
+  <classPathEntry
+      location="/Users/x/.m2/repository/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar"/>
+
+  <!--targetRuntime:
+        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXByExample；
+        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXByExample；
+  -->
+  <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，
+    比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+
+    <property name="javaFileEncoding" value="UTF-8"/>
+    <!-- 为模型生成序列化方法-->
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <!-- 为生成的Java模型创建一个toString方法 -->
+    <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
+
+    <plugin type="plugins.LombokPlugin"/>
+
+    <!-- 自定义生成model的代码注释 -->
+    <commentGenerator type="plugins.MyCommentGenerator">
+      <!--**阻止**生成注释，默认为false-->
+      <property name="suppressAllComments" value="true"/>
+      <property name="suppressDate" value="true"/>
+      <property name="addRemarkComments" value="true"/>
+    </commentGenerator>
+    <!--配置数据库连接-->
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                    connectionURL="jdbc:mysql://localhost:3306/ihrm?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai"
+                    userId="root"
+                    password="root">
+      <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
+      <property name="nullCatalogMeansCurrent" value="true" />
+    </jdbcConnection>
+    <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
+            targetPackage     指定生成的model生成所在的包名
+            targetProject     指定在该项目下所在的路径
+    -->
+    <javaModelGenerator targetPackage="com.ihrm.entity" targetProject="mybatis-generator/src/main/java">
+    <!-- 是否对model添加 构造函数 -->
+    <!--<property name="constructorBased" value="true"/>-->
+
+    <!-- 给Model添加一个父类 value为类名 -->
+    <!--<property name="rootClass" value=""/>-->
+
+    <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+    <property name="trimStrings" value="true"/>
+    </javaModelGenerator>
+
+    <!--指定生成mapper.xml的路径-->
+    <sqlMapGenerator targetPackage="mapper" targetProject="mybatis-generator/src/main/resources"/>
+
+    <!--指定生成mapper接口的的路径-->
+    <javaClientGenerator targetPackage="com.ihrm.dao" targetProject="mybatis-generator/src/main/java" type="XMLMAPPER">
+      <!-- 为生成的接口添加父接口 value为类名 -->
+      <!--<property name="rootInterface" value=""/>-->
+
+    </javaClientGenerator>
+
+    <!--
+        生成全部表tableName设为%
+        enableSelectByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询语句；
+        enableDeleteByExample（默认true）：MyBatis3Simple为false，指定是否生成动态删除语句；
+        enableCountByExample （默认true）：MyBatis3Simple为false，指定是否生成动态查询总条数语句（用于分页的总条数查询）；
+        enableUpdateByExample（默认true）MyBatis3Simple为false，指定是否生成动态修改语句（只修改对象中不为空的属性）；
+    -->
+    <table tableName="bs_user" domainObjectName="User" mapperName="UserDao"
+           enableSelectByExample="false"
+           enableDeleteByExample="false"
+           enableUpdateByExample="false"
+           enableCountByExample ="false">
+
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+      <!--<columnOverride column="staff_photo" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
+    </table>
+
+  </context>
+</generatorConfiguration>

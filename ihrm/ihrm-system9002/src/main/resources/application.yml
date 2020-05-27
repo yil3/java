@@ -1,0 +1,26 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: ihrm-system
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/ihrm?useSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jta:
+    bitronix:
+      properties:
+        warn-about-zero-resource-transaction:
+
+mybatis-plus:
+  type-aliases-package: com.ihrm.entity.system
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+logging:
+  level:
+    com.ihrm.dao: debug
+

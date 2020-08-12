@@ -55,7 +55,7 @@ public class ShowAllController {
         response.setHeader("content-disposition",openStyle + ";fileName=" + URLEncoder.encode(userFile.getOldFileName(),"utf-8"));
         //获取文件输入流
         FileInputStream fileInputStream = new FileInputStream(new File(loadPath,userFile.getNewFileName()));
-        //获取文件响应输出流
+        //获取response文件响应输出流
         ServletOutputStream outputStream = response.getOutputStream();
         //文件拷贝
         IOUtils.copy(fileInputStream,outputStream);

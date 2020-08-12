@@ -101,7 +101,7 @@
       <dependency>
         <groupId>com.qiniu</groupId>
         <artifactId>qiniu-java-sdk</artifactId>
-        <version>7.2.29</version>
+        <version>7.2.99</version>
       </dependency>
 
       <!--  -->
@@ -196,13 +196,27 @@
         <version>1.4.0</version>
       </dependency>
 
-
       <!-- 分页插件 -->
       <dependency>
         <groupId>com.github.pagehelper</groupId>
         <artifactId>pagehelper-spring-boot-starter</artifactId>
         <version>1.2.13</version>
       </dependency>
+
+
+      <!-- 二维码生成 -->
+      <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>core</artifactId>
+        <version>3.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>javase</artifactId>
+        <version>3.4.0</version>
+      </dependency>
+
+
 
 
     </dependencies>

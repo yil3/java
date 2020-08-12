@@ -1,0 +1,11 @@
+server:
+  port: 36662
+spring:
+  application:
+    name: test-rabbitmq
+  rabbitmq:
+    virtual-host: /cms
+    username: guest
+    password: guest
+    host: 127.0.0.1
+    port: 5672

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class TopicCustomer {
   @RabbitListener(bindings = {
       @QueueBinding(
-          value = @Queue,
+          value = @Queue(),
           exchange = @Exchange(value = "topics", type = "topic"),
-          key = {"user.save"}
+          key = {"user.find"}
       )
   })
   public void topic01(String message){
@@ -21,7 +21,7 @@ public class TopicCustomer {
 
   @RabbitListener(bindings = {
       @QueueBinding(
-          value = @Queue,
+          value = @Queue(),
           exchange = @Exchange(value = "topics", type = "topic"),
           key = {"user.*"}
       )
